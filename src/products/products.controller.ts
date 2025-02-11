@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query, ParseIntPipe, Search } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query, ParseIntPipe } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
@@ -14,8 +14,20 @@ export class ProductsController {
   //TODO verificar funcionamiento parseIntPipe automatico
   //Deprecated
   //buscar query
-  @Search('/productsSearch')
-  @ApiBody({ type: SearchProductDto })
+  @Post('/productsSearch')
+  @ApiBody({ type: SearchProductDto,
+    examples: {
+      example: {
+        value: {
+          marca: 'marca',
+          nombre: 'nombre',
+          precioMin: 0,
+          precioMax: 0,
+          available: true
+        }        
+      }
+    }
+   })
   async getProductSearch(@Body() query: SearchProductDto){
     console.log('query: ', query)
     const response = await this.productsService.searchProducts(query)
