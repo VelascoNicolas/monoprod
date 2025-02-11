@@ -15,7 +15,7 @@ export class ProductsController {
   //Deprecated
   //buscar query
   @Get('/productsSearch')
-  @ApiQuery({ name: 'marca/nombre/precioMin/precioMax', type: String })
+  @ApiQuery({ name: 'query', type: String })
   async getProductSearch(@Query() query: SearchProductDto){
     console.log('query: ', query)
     const response = await this.productsService.searchProducts(query)
