@@ -15,7 +15,7 @@ export class ProductsController {
   //Deprecated
   //buscar query
   @Get('/productsSearch')
-  async getProductSearch(@Body() query: SearchProductDto){
+  async getProductSearch(@Param() query: SearchProductDto){
     console.log('query: ', query)
     const response = await this.productsService.searchProducts(query)
     return response
