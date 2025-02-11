@@ -23,9 +23,6 @@ async function bootstrap() {
    .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  
-  
-  app.setGlobalPrefix('api');
 
   SwaggerModule.setup('api/docs', app, document, {
     customSiteTitle: 'Full Shop Productos Backend',
