@@ -4,7 +4,7 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { paginationDto } from '../common/dto';
 import { SearchProductDto } from './dto/search-product.dto';
-import { ApiTags,ApiQuery, ApiBody } from '@nestjs/swagger';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('productos')
 @ApiTags('Productos')
@@ -15,7 +15,6 @@ export class ProductsController {
   //Deprecated
   //buscar query
   @Get('/productsSearch')
-  @ApiBody({type: SearchProductDto})
   async getProductSearch(@Body() query: SearchProductDto){
     console.log('query: ', query)
     const response = await this.productsService.searchProducts(query)

@@ -1164,7 +1164,6 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
     if (query.available !== undefined) {
       where.available = query.available === true;
     }
-
     // Ejecutamos la consulta con Prisma
     return this.product.findMany({
       where,
